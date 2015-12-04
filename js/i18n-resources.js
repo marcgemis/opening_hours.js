@@ -1,7 +1,8 @@
 // localization {{{
 var resources = { // English is fallback language.
     // English (en) localization {{{
-    en: { translation: {
+    en: {
+        translation: {
             "lang": {
                 "en": "English",
                 "fr": "French",
@@ -49,6 +50,7 @@ var resources = { // English is fallback language.
                 "week stable": "Schedule is valid in any given week.",
                 "not week stable": "Attention! This schedule might change for other weeks.",
                 "value for": "value for",
+                "value to compare": "value to compare to the first value",
                 "MatchingRule": "Applied rule",
                 "prettified value": 'prettified opening_hours value (this value can be safely used in OSM, after all warnings have been <a href="__copyFunc__">solved</a>)',
                 "prettified value for displaying": "prettified opening_hours value for displaying (including newlines, do not use this as value for OSM)",
@@ -78,6 +80,7 @@ var resources = { // English is fallback language.
                 "rule separator  ||": 'rule separator (the next rule will be a fallback rule which applies for any time not handled by previous rules)',
                 "rule separator ,": 'rule separator (the next rule will be a additional rule which extends the times of previous rules and does not override them like normal rules would do)',
                 "JOSM remote conn error": 'Could not connect to JOSM. Please make sure that JOSM is running and is configured for remote control on the default tcp port 8111.',
+                "refer to yohours": 'This value can also be parsed by YoHours which is a simple editor for the opening_hours syntax. If you don’t need advanced features of the syntax, <a href=\"__href__\">give it a try</a>.',
             },
             "words": {
                 "modifier": "__name__ modifier",
@@ -133,8 +136,146 @@ var resources = { // English is fallback language.
         },
     }, // }}}
 
+    // Dutch (nl) localization {{{
+    nl: {
+        translation: {
+            "lang": {
+                "en": "Engels",
+                "fr": "Frans",
+                "de": "Duits",
+                "ru": "Russisch",
+                "pt": "Portugees",
+                "it": "Italiaans",
+                "uk": "Oekraïens",
+                "nl": "Nederlands",
+                "choose": "Kies taal",
+            },
+
+            "weekdays": {
+                "word next": { // The Russian language seems to use other words for next for some weekdays.
+                    "su": "volgende",
+                    "mo": "volgende",
+                    "tu": "volgende",
+                    "we": "volgende",
+                    "th": "volgende",
+                    "fr": "volgende",
+                    "sa": "volgende",
+                }
+            },
+            "texts": {
+                "filter": {
+                    "none": "Geen filters toepassen",
+                    "error": "Fouten en waarschuwingen",
+                    "warnOnly": "Enkel waarschuwingen",
+                    "errorOnly": "Enkel foutboodschappen",
+                    "open": "Enkel zaken die nu open zijn",
+                    "unknown": "Enkel zaken die nu mogelijks open zijn",
+                    "closed": "Enkel zaken die nu gesloten zijn",
+                    "openOrUnknown": "Enkel zaken die nu open zijn of die mogelijks open zijn",
+                },
+                "title": "opening_hours Evaluatie Gereedschap",
+                "open always": "Zaak is altijd open",
+                "unknown always": "Zaak is waarschijnlijk altijd open",
+                "closed always": "Zaak is altijd gesloten in de (nabije) toekomst",
+                "open now": "Zaak is nu open",
+                "unknown now": "Zaak zou nu open kunnen zijn",
+                "closed now": "Zaak is nu gesloten",
+                "will close": "maar <a href=\"__href__\">zal</a> sluiten op __timestring__.",
+                "will unknown": "maar <a href=\"__href__\">zal</a> misschien open zjn op __timestring__.",
+                "will open": "maar <a href=\"__href__\">zal</a> openen op __timestring__.",
+                "depends on": ", maar hangt af van __comment__.",
+                "week stable": "Openingsuren zijn altijd geldig.",
+                "not week stable": "Opegelet! Openingsuren kunnen wijzigen afhankelijk van de gekozen week.",
+                "value for": "waarde voor",
+                "value to compare": "waarde om te vergelijken met de eerste waarde",
+                "MatchingRule": "Toegepaste regel",
+                "prettified value": 'Mooi gemaakte opening_hours waarde (deze waarde kan zonder problemen in OSM gebruikt worden, nadat alle waarschuwingen zijn  <a href="__copyFunc__">weggewerkt</a>)',
+                "prettified value for displaying": "Mooi gemaakte opening_hours waarde om op het scherm te tonen (bevat verschillende lijnen, gebruik dit niet als waarde voor OSM)",
+                "more information": "Voor meer informatie, raadpleef de <a __href__>OSM wiki</a>.",
+                "this website": "Deze website en de JavaScript library die gebruikt wordt voor de evaluatie zijn ontwikkeld op <a href=\"__url__\" target=\"_blank\">__hoster__</a>.",
+                "if PH is between Mo and Fr": "Enkel als de feestdag op een weekdag valt (Ma-Vr)",
+                "check out error correction, prettify": "controleer de fout correctie en de mooi maak functie voor de opening_hours waarde",
+                "SH,PH or PH,SH": "Dit maakt een klein verschil met de vorige waarde. De naam van de vrije schooldagen zal de namen van de feestdagen in de commentaar overschrijven.",
+                "config POIs": "configureer POIs",
+                "reload map": "herlaad kaart",
+                "heading map": "Kaart met laag voor de opening_hours tag op on OpenStreetMap",
+                "map is showing": 'Deze kaart toont de object met tag <a rel="external" href="__wikiUrl__">opening_hours</a> als gekleurde cirkels:',
+                "error": "De waarde kon niet ontleed worden",
+                "warning": "Indien er waarschuwingen getoond werden tijden de evaluatie, zal een blauw __sign__ getoond worden in het status icoon.",
+                "map filter": "Er zijn een aantal filters die kunnen toegepast worden om fouten te vinden en te verbeteren (QA) of gewoon om gesloten of open zaken te tonen:",
+                "data source": 'De overlay gegevens komen van __OSMStartaTag__ en is bevraagd met __APIaTag__. De kaart is __OSMaTag__.',
+                "mode 0": 'Alleen tijdsperioden zijn toegestaan (zoals bij de tags opening_hours, lit)',
+                "mode 1": 'Individuele tijdspunten zijn toegestaan',
+                "mode 2": 'Zowel tijdsperioden als individuele tijdspunten zijn toegestaan (zoals bij de tags service_times, collection_times)',
+                "value to long for osm": 'De waarde is te lang voor OSM. De OpenStreetMap databank is momenteel beperkt tot waardes met __maxLength__ karakter. De mooi gemaakte waarde heeft een lengte van __pretLength__ en de ingevoerde waarde is __valLength__ karakters lang',
+                "low zoom level": 'De POIs verschijnen vanaf zoomniveau ${next}. U bent momenteel op zoomniveau ${actual}.',
+                "all n entries": 'Alle resultaten (__total__):',
+                "the first entries": 'De eerste __number__ van __total__ resultaten:',
+                "load all with JOSM": 'laad alles in JOSM',
+                "evaluation tool": 'evaluatie gereedschap',
+                "rule separator ;": 'scheidingsteken voor regel (de volgende regel zal een normale regel zijn)',
+                "rule separator  ||": 'scheidingsteken voor regel (de volgende regel will be a fallback rule which applies for any time not handled by previous rules)',
+                "rule separator ,": 'scheidingsteken voor regel (de volgende regel is aanvullende regel die de tijden van de vorige regels uitbreid. De volgende regel overschrijft de vorige regels dus niet (zoals een normale regel wel doet)',
+                "JOSM remote conn error": 'Kan niet connecteren met JOSM. Controleer aub dat  JOSM is opgestart en geconfigureerd is voor afstandbediening via de standaard tcp port 8111.',
+                "refer to yohours": 'Deze waarde kan ook geïnterpreteerd worden door YoHours. Dit is een eenvoudige editor voor de opening_hours syntax.  Indien je de geavanceerde mogelijkheden van de syntax niet nodig hebt, <a href=\"__href__\">probeer YoHours dan eens</a>.',
+            },
+            "words": {
+                "modifier": "__name__ wijziger (modifier)",
+                "selector": "__name__ keuzeschakelaar (selector)",
+                "mode": "evaluatie modus",
+                "green": "groen",
+                "yellow": "geel",
+                "red": "rood",
+                "violet": "violet",
+                "to": "tot",
+                "and": "en",
+                "no": "nee",
+                "his": "zijn",
+                "docu": "documentatie",
+                "of course": "natuurlijk",
+                "open": "open",
+                "unknown": "onbekend",
+                "closed": "gesloten",
+                "comment": "commentaar",
+                "today": "morgen",
+                "tomorrow": "vandaag",
+                // "on weekday": "on", // not needed in this context
+                "on weekday": " ",
+                "in duration": "in",
+                "region": "regio",
+                "position": "positie",
+                "lat": "latitude",
+                "lon": "longitude",
+                "country": "land",
+                "state": "staat",
+                "status": "status",
+                "examples": "Voorbeelden",
+                "none": "geen",
+                "date": "datum",
+                "time": { // __count__ Can not cover need for Russian language (one, several, many).
+                    "minute": "minuut",
+                    "minute_plural": "minuten",
+                    "minute many": "minuten",
+                    "hour": "uur",
+                    "hour_plural": "uren",
+                    "hour many": "uren",
+                    "day": "dag",
+                    "day_plural": "dagen",
+                    "day many": "dagen",
+                    "year": "jaar",
+                    "year_plural": "jaren",
+                    "years many": "jaren",
+                    "hours minutes sep": "en ",
+                    "now": "nu",
+                    "time": "tijd",
+                },
+            },
+        },
+    }, // }}}
+
     // French (fr) localization {{{
-    fr: { translation: {
+    fr: {
+        translation: {
             "lang": {
                 "en": "Anglais",
                 "fr": "Français",
@@ -204,6 +345,7 @@ var resources = { // English is fallback language.
                 "low zoom level": 'Les POIs vont commencer à apparaître au niveau de zoom ${next} et au-delà. Vous êtes actuellement au niveau de zoom ${actual}.',
                 "all n entries": "Ensemble des __total__ entrées :",
                 "the first entries": "Les __number__ premières entrées sur __total__ :",
+                "refer to yohours": "Cette valeur peut également s'afficher dans YoHours, un éditeur simple d'horaires d'ouverture. Si vous n'utilisez pas les fonctionnalités avancées de la syntaxe, <a href=\"__href__\">vous pouvez l'essayer ici</a>.",
             },
             "words": {
                 "mode": "mode d'évaluation",
@@ -255,7 +397,8 @@ var resources = { // English is fallback language.
     }, // }}}
 
     // German (de) localization {{{
-    de: { translation: {
+    de: {
+        translation: {
             "lang": {
                 "en": "Englisch",
                 "fr": "Französisch",
@@ -303,11 +446,12 @@ var resources = { // English is fallback language.
                 "week stable": "Dieser Wochenplan gilt für jede Woche.",
                 "not week stable": "Achtung! Dieser Wochenplan kann sich in anderen Wochen ändern.",
                 "value for": "Wert für",
+                "value to compare": "Wert, der mit dem ersten Wert verglichen werden soll",
                 "MatchingRule": "Zur Anwendung gekommene Regel",
                 "prettified value": 'Schön formatierter opening_hours Wert (dieser Wert sollte in OSM verwendet werden, nachdem alle Warnungen <a href="__copyFunc__">beseitigt wurden</a>)',
                 "prettified value for displaying": "Schön formatierter opening_hours Wert für die Anzeige (mit Zeilenumbrüchen, nicht als Tag für OSM gedacht …)",
-                "more information": "Für weitere Informationen kannst dir das <a __href__>OSM wiki</a> anschauen.",
-                "this website": "Die Entwicklung dieser Webseite und der JavaScript Bibliothek zur Auswertung der Öffnungszeiten findet auf <a href=\"__url__\" target=\"_blank\">__hoster__</a> statt.",
+                "more information": "Für weitere Informationen kannst du dir das <a __href__>OSM-Wiki</a> anschauen.",
+                "this website": "Die Entwicklung dieser Webseite und der JavaScript-Bibliothek zur Auswertung der Öffnungszeiten findet auf <a href=\"__url__\" target=\"_blank\">__hoster__</a> statt.",
                 "if PH is between Mo and Fr": "Nur wenn der Feiertag auf einen Wochentag (Mo-Fr) fällt",
                 "check out error correction, prettify": "Probiere die Fehlererkennung und schau dir den korrigierten opening_hours Wert an",
                 "SH,PH or PH,SH": "Dieser Wert unterscheidet sich insofern zum vorherigen als dass der Name für Schulferien den Namen von Feiertagen im Kommentar überschreibt, wenn sich diese überlagern",
@@ -332,6 +476,7 @@ var resources = { // English is fallback language.
                 "rule separator  ||": 'Begrenzungszeichen für Regeln (es folgt eine Oder-Verknüpfte Regel die nur auf Zeiten zutrifft, die nicht bereits von vorherigen Regeln behandelt werden)',
                 "rule separator ,": 'Begrenzungszeichen für Regeln (es folgt eine additive Regel deren Zeiten vorherige Regeln erweitern und nicht überschreiben wie bei normalen Regeln)',
                 "JOSM remote conn error": 'Es konnte keine Verbindung zu JOSM aufgebaut werden. Bitte prüfe, ob JOSM ausgeführt wird und Fernsteuerung auf dem Standard tcp Port 8111 erlaubt ist.',
+                "refer to yohours": 'Dieser Wert kann auch von YoHours verarbeitet werden. YoHours ist ein benutzerfreundlicher Editor für die opening_hours Syntax. Falls keine fortschrittlichen Funktionen der Syntax benötigt werden ist YoHours eine einsteigerfreundliche Alternative. <a href=\"__href__\">Ausprobieren</a>.',
             },
             "words": {
                 "modifier": "__name__ Regeleigenschaft",
@@ -387,7 +532,8 @@ var resources = { // English is fallback language.
     }, // }}}
 
     // Russian (ru) localization {{{
-    ru: { translation: {
+    ru: {
+        translation: {
             "lang": {
                 "en": "английский",
                 "fr": "французский",
@@ -468,7 +614,8 @@ var resources = { // English is fallback language.
     }, // }}}
 
     // Portuguese (pt) localization {{{
-    pt: { translation: {
+    pt: {
+        translation: {
             "lang": {
                 "en": "Inglês",
                 "fr": "Francês",
@@ -591,7 +738,8 @@ var resources = { // English is fallback language.
     }, // }}}
 
     // Italian (it) localization {{{
-    it: { translation: {
+    it: {
+        translation: {
             "lang": {
                 "en": "Inglese",
                 "fr": "Francese",
@@ -714,7 +862,8 @@ var resources = { // English is fallback language.
     }, // }}}
 
     // Ukrainian (uk) localization {{{
-    uk: { translation: {
+    uk: {
+        translation: {
             "lang": {
                 "en": "англійська",
                 "fr": "французька",
@@ -860,13 +1009,21 @@ function translatePage() { // Gets called when localization is loaded.
     // $("headline").i18n();
 }
 
-i18n.init({
+if (!i18n.isInitialized()) {
+    i18n.init({
         fallbackLng: 'en',
+        // resGetPath: 'locales/__ns__.__lng__.json',
         resStore: resources,
         getAsync: true,
         useCookie: true,
         debug: true
     }, translatePage);
-moment.lang(i18n.lng());
+} else {
+    // compat with an app that already initializes i18n
+    for (lang in resources) {
+        i18n.addResourceBundle(lang, 'translation', resources[lang]['translation'], true);
+    }
+}
+moment.locale(i18n.lng());
 // }}}
 // }}}

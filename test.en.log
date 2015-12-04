@@ -323,6 +323,10 @@ With [1m[34mwarnings[39m[22m:
 With [1m[34mwarnings[39m[22m:
 	*Schulferien <--- (Bitte benutze die Schreibweise "SH" für "schulferien".)
 	*Schulferien Mo-Fr <--- (This rule is not very explicit because there is no time selector being used. Please add a time selector to this rule or use a comment to make it more explicit.)
+"SH" for "Ferien Mo-Fr": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*Ferien <--- (Bitte benutze die Schreibweise "SH" für "ferien".)
+	*Ferien Mo-Fr <--- (This rule is not very explicit because there is no time selector being used. Please add a time selector to this rule or use a comment to make it more explicit.)
 "SH" for "schoolholiday Mo-Fr": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*schoolholiday <--- (Please use notation "SH" for "schoolholiday".)
@@ -341,12 +345,15 @@ With [1m[34mwarnings[39m[22m:
 	*SH: Mo-Fr <--- (This rule is not very explicit because there is no time selector being used. Please add a time selector to this rule or use a comment to make it more explicit.)
 "SH" for "SH on work day": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
-	*SH on work day <--- (Assuming "Mo-Fr" for "on work day". Please avoid using "workday": http://wiki.openstreetmap.org/wiki/Talk:Key:opening_hours#need_syntax_for_holidays_and_workingdays)
+	*SH on work day <--- (Assuming "Mo-Fr" for "on work day". Please avoid using "workday": https://wiki.openstreetmap.org/wiki/Talk:Key:opening_hours#need_syntax_for_holidays_and_workingdays)
 	*SH on work day <--- (This rule is not very explicit because there is no time selector being used. Please add a time selector to this rule or use a comment to make it more explicit.)
 "SH" for "SH on work days": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
-	*SH on work days <--- (Assuming "Mo-Fr" for "on work days". Please avoid using "workday": http://wiki.openstreetmap.org/wiki/Talk:Key:opening_hours#need_syntax_for_holidays_and_workingdays)
+	*SH on work days <--- (Assuming "Mo-Fr" for "on work days". Please avoid using "workday": https://wiki.openstreetmap.org/wiki/Talk:Key:opening_hours#need_syntax_for_holidays_and_workingdays)
 	*SH on work days <--- (This rule is not very explicit because there is no time selector being used. Please add a time selector to this rule or use a comment to make it more explicit.)
+"SH" for "SH Mo-Fr": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*SH Mo-Fr <--- (This rule is not very explicit because there is no time selector being used. Please add a time selector to this rule or use a comment to make it more explicit.)
 "Variable days: public holidays" for "PH +1 day": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*PH +1 day <--- (This rule is not very explicit because there is no time selector being used. Please add a time selector to this rule or use a comment to make it more explicit.)
@@ -531,6 +538,9 @@ With [1m[34mwarnings[39m[22m:
 "SH(summer holiday) workaround" for "Jul-Sep SH": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*Jul-Sep SH <--- (This rule is not very explicit because there is no time selector being used. Please add a time selector to this rule or use a comment to make it more explicit.)
+"SH for Romania" for "SH": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*SH <--- (This rule is not very explicit because there is no time selector being used. Please add a time selector to this rule or use a comment to make it more explicit.)
 "Variable days: Russian common public holidays" for "PH": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*PH <--- (This rule is not very explicit because there is no time selector being used. Please add a time selector to this rule or use a comment to make it more explicit.)
@@ -751,6 +761,9 @@ With [1m[34mwarnings[39m[22m:
 With [1m[34mwarnings[39m[22m:
 	*PH <--- (This rule is not very explicit because there is no time selector being used. Please add a time selector to this rule or use a comment to make it more explicit.)
 "Variable days: United States public holidays. Wyoming" for "PH": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*PH <--- (This rule is not very explicit because there is no time selector being used. Please add a time selector to this rule or use a comment to make it more explicit.)
+"Variable days: Czech Republic public holidays." for "PH": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*PH <--- (This rule is not very explicit because there is no time selector being used. Please add a time selector to this rule or use a comment to make it more explicit.)
 "Weekdays" for "Mo,Th,Sa,Su 10:00-12:00": [1m[32mPASSED[39m[22m
@@ -1309,9 +1322,9 @@ With [1m[34mwarnings[39m[22m:
 "Based on real world example: Is processed right." for "Apr-Oct: Sa-Su 08:00-15:00, May-Sep: 00:00-24:00": [1m[32mPASSED[39m[22m
 "Based on real world example: Is processed right." for "Apr-Oct: Sa-Su 08:00-15:00; May-Sep: 00:00-24:00": [1m[32mPASSED[39m[22m
 "Real world example: Was not processed right." for "Mo-Fr 07:00-19:30; Sa-Su 08:00-19:30; 19:30-21:00 open "No new laundry loads in"; Nov Th[4] off; Dec 25 off": [1m[32mPASSED[39m[22m
-An error occurred during evaluation of the value "Jan off; Feb off; Mar off; Apr Tu-Su 10:00-14:30, May Tu-Su 10:00-14:30; Jun Tu-Su 09:00-16:00; Jul Tu-Su 10:00-17:00; Aug Tu-Su 10:00-17:00; Sep Tu-Su 10:00-14:30; Oct Tu-Su 10:00-14:30 Nov off; Dec off". Please file a bug report here: https://github.com/ypid/opening_hours.js/issues?state=open. Bug in warning generation code which could not determine the exact position of the warning or error in value.
+An error occurred during evaluation of the value "Jan off; Feb off; Mar off; Apr Tu-Su 10:00-14:30, May Tu-Su 10:00-14:30; Jun Tu-Su 09:00-16:00; Jul Tu-Su 10:00-17:00; Aug Tu-Su 10:00-17:00; Sep Tu-Su 10:00-14:30; Oct Tu-Su 10:00-14:30 Nov off; Dec off". Please file a bug report or pull request: https://github.com/ypid/opening_hours.js. Bug in warning generation code which could not determine the exact position of the warning or error in value.
 tokens[nrule][2] is undefined. This is ok if nrule is the last rule.
-An error occurred during evaluation of the value "Jan off; Feb off; Mar off; Apr Tu-Su 10:00-14:30, May Tu-Su 10:00-14:30; Jun Tu-Su 09:00-16:00; Jul Tu-Su 10:00-17:00; Aug Tu-Su 10:00-17:00; Sep Tu-Su 10:00-14:30; Oct Tu-Su 10:00-14:30 Nov off; Dec off". Please file a bug report here: https://github.com/ypid/opening_hours.js/issues?state=open. Bug in warning generation code which could not determine the exact position of the warning or error in value.
+An error occurred during evaluation of the value "Jan off; Feb off; Mar off; Apr Tu-Su 10:00-14:30, May Tu-Su 10:00-14:30; Jun Tu-Su 09:00-16:00; Jul Tu-Su 10:00-17:00; Aug Tu-Su 10:00-17:00; Sep Tu-Su 10:00-14:30; Oct Tu-Su 10:00-14:30 Nov off; Dec off". Please file a bug report or pull request: https://github.com/ypid/opening_hours.js. Bug in warning generation code which could not determine the exact position of the warning or error in value.
 tokens[nrule][2] is undefined. This is ok if nrule is the last rule.
 "Real world example: Was not processed right" for "Jan off; Feb off; Mar off; Apr Tu-Su 10:00-14:30, May Tu-Su 10:00-14:30; Jun Tu-Su 09:00-16:00; Jul Tu-Su 10:00-17:00; Aug Tu-Su 10:00-17:00; Sep Tu-Su 10:00-14:30; Oct Tu-Su 10:00-14:30 Nov off; Dec off": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
@@ -1631,43 +1644,43 @@ With [1m[34mwarnings[39m[22m:
 	*"testing" "second comment" <--- (You have used 2 comments in one rule. You may only use one in one rule. Rules can be separated by ";".)
 "Value not ideal (probably wrong). Should throw a warning." for "'testing'; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
-	*' <--- (Please use notation """ for "'". The used quote signs are not defined in the specification. See http://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
-	*'testing' <--- (Please use notation """ for "'". The used quote signs are not defined in the specification. See http://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
+	*' <--- (Please use notation """ for "'". The used quote signs are not defined in the specification. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
+	*'testing' <--- (Please use notation """ for "'". The used quote signs are not defined in the specification. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
 "Value not ideal (probably wrong). Should throw a warning." for "„testing"; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
-	*„ <--- (Bitte benutze die Schreibweise """ für "„". Es ist war typografisch korrekt aber laut der Spezifikation für opening_hours nicht erlaubt. Siehe auch: http://wiki.openstreetmap.org/wiki/DE:Key:opening_hours/specification.)
+	*„ <--- (Bitte benutze die Schreibweise """ für "„". Es ist war typografisch korrekt aber laut der Spezifikation für opening_hours nicht erlaubt. Siehe auch: https://wiki.openstreetmap.org/wiki/DE:Key:opening_hours/specification.)
 "Value not ideal (probably wrong). Should throw a warning." for "„testing“; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
-	*„ <--- (Bitte benutze die Schreibweise """ für "„". Es ist war typografisch korrekt aber laut der Spezifikation für opening_hours nicht erlaubt. Siehe auch: http://wiki.openstreetmap.org/wiki/DE:Key:opening_hours/specification.)
-	*„testing“ <--- (Bitte benutze die Schreibweise """ für "“". Es ist war typografisch korrekt aber laut der Spezifikation für opening_hours nicht erlaubt. Siehe auch: http://wiki.openstreetmap.org/wiki/DE:Key:opening_hours/specification.)
+	*„ <--- (Bitte benutze die Schreibweise """ für "„". Es ist war typografisch korrekt aber laut der Spezifikation für opening_hours nicht erlaubt. Siehe auch: https://wiki.openstreetmap.org/wiki/DE:Key:opening_hours/specification.)
+	*„testing“ <--- (Bitte benutze die Schreibweise """ für "“". Es ist war typografisch korrekt aber laut der Spezifikation für opening_hours nicht erlaubt. Siehe auch: https://wiki.openstreetmap.org/wiki/DE:Key:opening_hours/specification.)
 "Value not ideal (probably wrong). Should throw a warning." for "“testing”; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
-	*“ <--- (Bitte benutze die Schreibweise """ für "“". Es ist war typografisch korrekt aber laut der Spezifikation für opening_hours nicht erlaubt. Siehe auch: http://wiki.openstreetmap.org/wiki/DE:Key:opening_hours/specification.)
-	*“testing” <--- (Bitte benutze die Schreibweise """ für "”". Es ist war typografisch korrekt aber laut der Spezifikation für opening_hours nicht erlaubt. Siehe auch: http://wiki.openstreetmap.org/wiki/DE:Key:opening_hours/specification.)
+	*“ <--- (Bitte benutze die Schreibweise """ für "“". Es ist war typografisch korrekt aber laut der Spezifikation für opening_hours nicht erlaubt. Siehe auch: https://wiki.openstreetmap.org/wiki/DE:Key:opening_hours/specification.)
+	*“testing” <--- (Bitte benutze die Schreibweise """ für "”". Es ist war typografisch korrekt aber laut der Spezifikation für opening_hours nicht erlaubt. Siehe auch: https://wiki.openstreetmap.org/wiki/DE:Key:opening_hours/specification.)
 "Value not ideal (probably wrong). Should throw a warning." for "«testing»; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
-	*« <--- (Please use notation """ for "«". The used quote signs might be typographically correct but are not defined in the specification. See http://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
-	*«testing» <--- (Please use notation """ for "»". The used quote signs might be typographically correct but are not defined in the specification. See http://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
+	*« <--- (Please use notation """ for "«". The used quote signs might be typographically correct but are not defined in the specification. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
+	*«testing» <--- (Please use notation """ for "»". The used quote signs might be typographically correct but are not defined in the specification. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
 "Value not ideal (probably wrong). Should throw a warning." for "「testing」; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
-	*「 <--- (Please use notation """ for "「". The used quote signs might be typographically correct but are not defined in the specification. See http://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
-	*「testing」 <--- (Please use notation """ for "」". The used quote signs might be typographically correct but are not defined in the specification. See http://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
+	*「 <--- (Please use notation """ for "「". The used quote signs might be typographically correct but are not defined in the specification. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
+	*「testing」 <--- (Please use notation """ for "」". The used quote signs might be typographically correct but are not defined in the specification. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
 "Value not ideal (probably wrong). Should throw a warning." for "『testing』; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
-	*『 <--- (Please use notation """ for "『". The used quote signs might be typographically correct but are not defined in the specification. See http://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
-	*『testing』 <--- (Please use notation """ for "』". The used quote signs might be typographically correct but are not defined in the specification. See http://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
+	*『 <--- (Please use notation """ for "『". The used quote signs might be typographically correct but are not defined in the specification. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
+	*『testing』 <--- (Please use notation """ for "』". The used quote signs might be typographically correct but are not defined in the specification. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
 "Value not ideal (probably wrong). Should throw a warning." for "‚testing‘; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
-	*‚ <--- (Please use notation """ for "‚". The used quote signs might be typographically correct but are not defined in the specification. See http://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
-	*‚testing‘ <--- (Please use notation """ for "‘". The used quote signs might be typographically correct but are not defined in the specification. See http://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
+	*‚ <--- (Please use notation """ for "‚". The used quote signs might be typographically correct but are not defined in the specification. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
+	*‚testing‘ <--- (Please use notation """ for "‘". The used quote signs might be typographically correct but are not defined in the specification. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
 "Value not ideal (probably wrong). Should throw a warning." for "‘testing‘; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
-	*‘ <--- (Please use notation """ for "‘". The used quote signs might be typographically correct but are not defined in the specification. See http://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
-	*‘testing‘ <--- (Please use notation """ for "‘". The used quote signs might be typographically correct but are not defined in the specification. See http://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
+	*‘ <--- (Please use notation """ for "‘". The used quote signs might be typographically correct but are not defined in the specification. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
+	*‘testing‘ <--- (Please use notation """ for "‘". The used quote signs might be typographically correct but are not defined in the specification. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
 "Value not ideal (probably wrong). Should throw a warning." for "’testing’; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
-	*’ <--- (Please use notation """ for "’". The used quote signs might be typographically correct but are not defined in the specification. See http://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
-	*’testing’ <--- (Please use notation """ for "’". The used quote signs might be typographically correct but are not defined in the specification. See http://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
+	*’ <--- (Please use notation """ for "’". The used quote signs might be typographically correct but are not defined in the specification. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
+	*’testing’ <--- (Please use notation """ for "’". The used quote signs might be typographically correct but are not defined in the specification. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification.)
 "Value not ideal (probably wrong). Should throw a warning." for "Jan 12:00-13:00 Mo 15:00-16:00; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*Jan 12:00-13:00 Mo 15:00-16:00 <--- (You have used 2 not connected time ranges in one rule. This is probably an error. Equal selector types can (and should) always be written in conjunction separated by comma. Example for time ranges "12:00-13:00,15:00-18:00". Example for weekdays "Mo-We,Fr". Rules can be separated by ";".)
@@ -1787,10 +1800,10 @@ false
 
 "Value not ideal (probably wrong). Should throw a warning. warnings_severity: 5" for "Mo-Fr 08:00-16:00": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
-	*Mo-Fr 08:00-16:00 <--- (There was no PH (public holiday) specified. This is not very explicit. Unfortunately the tag key (e.g. "opening_hours", or "lit") is unknown to opening_hours.js. This warning only applies to the key opening_hours. If your value is for that key than read on. If not you can ignore the following. Please either append a "PH off" rule if the amenity is closed on all public holidays or use something like "Sa,Su,PH 12:00-16:00" to say that on Saturdays, Sundays and on public holidays the amenity is open 12:00-16:00. If you are not certain try to find it out. If you can’t then do not add PH to the value and ignore this warning.)
+	*Mo-Fr 08:00-16:00 <--- (There was no PH (public holiday) specified. This is not very explicit. Unfortunately the tag key (e.g. "opening_hours", or "lit") is unknown to opening_hours.js. This warning only applies to the key opening_hours. If your value is for that key than read on. If not you can ignore the following. Please either append a "PH off" rule if the amenity is closed on all public holidays or use something like "Sa,Su,PH 12:00-16:00" to say that on Saturdays, Sundays and on public holidays the amenity is open 12:00-16:00. If the amenity is open everyday including public holidays then you can make this explicit by writing "Mo-Su,PH". If you are not certain try to find it out. If you can’t then do not add PH to the value and ignore this warning.)
 "Value not ideal (probably wrong). Should throw a warning. warnings_severity: 5, "tag_key": "opening_hours"" for "Mo-Fr 08:00-16:00": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
-	*Mo-Fr 08:00-16:00 <--- (There was no PH (public holiday) specified. This is not very explicit. Please either append a "PH off" rule if the amenity is closed on all public holidays or use something like "Sa,Su,PH 12:00-16:00" to say that on Saturdays, Sundays and on public holidays the amenity is open 12:00-16:00. If you are not certain try to find it out. If you can’t then do not add PH to the value and ignore this warning.)
+	*Mo-Fr 08:00-16:00 <--- (There was no PH (public holiday) specified. This is not very explicit. Please either append a "PH off" rule if the amenity is closed on all public holidays or use something like "Sa,Su,PH 12:00-16:00" to say that on Saturdays, Sundays and on public holidays the amenity is open 12:00-16:00. If the amenity is open everyday including public holidays then you can make this explicit by writing "Mo-Su,PH". If you are not certain try to find it out. If you can’t then do not add PH to the value and ignore this warning.)
 "Incorrect syntax which should throw an error" for "MON-FRI 5PM-12AM | SAT-SUN 12PM-12AM": [1m[32mPASSED[39m[22m
 MON-FRI 5PM-12AM |  <--- (Unexpected token: "|" This means that the syntax is not valid at that point or it is currently not supported.) MON <--- (Please use the abbreviation "Mo" for "mon".); MON-FRI <--- (Please use the abbreviation "Fr" for "fri".); MON-FRI 5PM <--- (Please use time format in 24 hours notation ("pm"). If PM is used you might have to convert the hours to the 24 hours notation.); MON-FRI 5PM-12AM <--- (Please use time format in 24 hours notation ("am"). If PM is used you might have to convert the hours to the 24 hours notation.); MON-FRI 5PM-12AM | SAT <--- (Please use the abbreviation "Sa" for "sat".); MON-FRI 5PM-12AM | SAT-SUN <--- (Please use the abbreviation "Su" for "sun".); MON-FRI 5PM-12AM | SAT-SUN 12PM <--- (Please use time format in 24 hours notation ("pm"). If PM is used you might have to convert the hours to the 24 hours notation.); MON-FRI 5PM-12AM | SAT-SUN 12PM-12AM <--- (Please use time format in 24 hours notation ("am"). If PM is used you might have to convert the hours to the 24 hours notation.); MON-FRI 5PM-12AM  <--- (Time range without minutes specified. Not very explicit! Please use this syntax instead "17:00-12:00".)
 
@@ -1864,7 +1877,7 @@ week week  <--- (Unexpected token in week range: week)
 week 2-53 00:00-24:00: <--- (Unexpected token: "timesep" This means that the syntax is not valid at that point or it is currently not supported.) 
 
 "Incorrect syntax which should throw an error" for "week 2-53 00:00-24:00:::; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
-week 2-53 00:00-24:00::: <--- (Unexpected token: "timesep" This means that the syntax is not valid at that point or it is currently not supported.) 
+week 2-53 00:00-24:00: <--- (Unexpected token: "timesep" This means that the syntax is not valid at that point or it is currently not supported.) 
 
 "Incorrect syntax which should throw an error" for "week 2-53 00::00-24:00; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 week 2-53 00: <--- (Missing minutes in time range after: "timesep")
@@ -1873,13 +1886,13 @@ week 2-53 00: <--- (Missing minutes in time range after: "timesep")
 week 2-52/2 We,  <--- (An additional rule does not make sense here. Just use a ";" as rule separator. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification#explain:additional_rule_separator)
 
 "Incorrect syntax which should throw an error" for "(sunrise+01:00-sunset; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
-(sunrise+01:00- <--- (Calculcation with variable time is not in the right syntax. Missing ")".)
+(sunrise+01:00- <--- (Calculation with variable time is not in the right syntax. Missing ")".)
 
 "Incorrect syntax which should throw an error" for "(sunrise+01::)-sunset; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
-(sunrise+01:: <--- (Calculcation with variable time is not in the right syntax (time).)
+(sunrise+01:: <--- (Calculation with variable time is not in the right syntax (time).)
 
 "Incorrect syntax which should throw an error" for "(sunrise)-sunset; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
-(sunrise) <--- (Calculcation with variable time is not in the right syntax. "+" or "-" expected.)
+(sunrise) <--- (Calculation with variable time is not in the right syntax. "+" or "-" expected.)
 
 "Incorrect syntax which should throw an error" for "(; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 ( <--- (Unexpected token: "(" This means that the syntax is not valid at that point or it is currently not supported.) 
@@ -1930,7 +1943,7 @@ dusk <--- (hyphen (-) or open end (+) in time range expected. For working with p
 Sa[1. <--- ("]" or more numbers expected.)
 
 "Incorrect syntax which should throw an error" for "Sa[1,0,3]; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
-Sa[1,0 <--- (Number between -5 and 5 (except 0) expected)
+Sa[1,0 <--- (Number between -5 and 5 (except 0) expected.)
 
 "Incorrect syntax which should throw an error" for "Sa[1,3-6]; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 Sa[1,3-6 <--- (Number between -5 and 5 (except 0) expected.)
@@ -1966,13 +1979,13 @@ Jan,, <--- (Unexpected token in month range: ,)
 Mo, <--- (An additional rule does not make sense here. Just use a ";" as rule separator. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification#explain:additional_rule_separator)
 
 "Incorrect syntax which should throw an error" for "12:00-15:00/60; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
-12:00-15:00/60 <--- (opening_hours is running in "time range mode". Found point in time.)
+12:00-15:00/60 <--- (opening_hours.js is running in "time range mode". Found point in time.)
 
 "Incorrect syntax which should throw an error" for "12:00-15:00/1:00; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
-12:00-15:00/1:00 <--- (opening_hours is running in "time range mode". Found point in time.)
+12:00-15:00/1:00 <--- (opening_hours.js is running in "time range mode". Found point in time.)
 
 "Incorrect syntax which should throw an error" for "12:00-15:00/1:; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
-12:00-15:00/1: <--- (Time period does not continue as expected. Exampe "/01:30".)
+12:00-15:00/1: <--- (Time period does not continue as expected. Example "/01:30".)
 
 "Incorrect syntax which should throw an error" for "Jun 0-Aug 23; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 Jun 0 <--- (The day for Jun must be between 1 and 31.)
@@ -2147,10 +2160,10 @@ Country code missing which is needed to select the correct holidays (see README 
 Mo sunrise, <--- (hyphen (-) or open end (+) in time range expected. For working with points in time, the mode for opening_hours.js has to be altered. Maybe wrong tag?)
 
 "opening_hours.js is in the wrong mode." for "Mo sunrise-(sunrise+01:00)/60": [1m[32mPASSED[39m[22m
-Mo sunrise-(sunrise+01:00)/60 <--- (opening_hours is running in "time range mode". Found point in time.)
+Mo sunrise-(sunrise+01:00)/60 <--- (opening_hours.js is running in "time range mode". Found point in time.)
 
 "opening_hours.js is in the wrong mode." for "Mo 12:00-14:00": [1m[32mPASSED[39m[22m
-Mo 12:00-14 <--- (opening_hours is running in "points in time mode". Found time range.)
+Mo 12:00-14 <--- (opening_hours.js is running in "points in time mode". Found time range.)
 
 "Time range starts outside of the current day for mode === 1." for "Mo-Fr 13:00,15:00,17:45,19:00,24:00; Sa 13:00,24:00; Su 10:00,18:00": [1m[32mPASSED[39m[22m
 Mo-Fr 13:00,15:00,17:45,19:00,24:00 <--- (Time range starts outside of the current day)
@@ -2176,23 +2189,34 @@ Mo-Fr 07:00,24.00 <--- (Time range starts outside of the current day)
 "Time range does not continue as expected for mode === 1." for " mar-nov 12:30-; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
  mar-nov 12:30- <--- (Time range does not continue as expected)
 
-"Time range does not continue as expected for mode === 1." for "7.00-": [1m[32mPASSED[39m[22m
+"Time range does not continue as expected for mode === 2." for "7.00-": [1m[32mPASSED[39m[22m
 7.00- <--- (Time range does not continue as expected)
 
-"Time range does not continue as expected for mode === 1." for " mar-nov 12:30-": [1m[32mPASSED[39m[22m
+"Time range does not continue as expected for mode === 2." for "11:30:14:00": [1m[32mPASSED[39m[22m
+11:30: <--- (Unexpected token: "timesep" This means that the syntax is not valid at that point or it is currently not supported.) 
+
+"Time range does not continue as expected for mode === 2." for " mar-nov 12:30-": [1m[32mPASSED[39m[22m
  mar-nov 12:30- <--- (Time range does not continue as expected)
 
-"Time range does not continue as expected for mode === 1." for " mar-nov 12:30-; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
+"Time range does not continue as expected for mode === 2." for " mar-nov 12:30-; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
  mar-nov 12:30- <--- (Time range does not continue as expected)
 
-"Time range does not continue as expected for mode === 1." for "(; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
+"Time range does not continue as expected for mode === 2." for "(; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 ( <--- (Unexpected token: "(" This means that the syntax is not valid at that point or it is currently not supported.) 
 
-"Time range does not continue as expected for mode === 1." for "sunrise-(; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
+"Time range does not continue as expected for mode === 2." for "sunrise-(; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 sunrise-( <--- (Time range does not continue as expected)
 
-"Time range does not continue as expected for mode === 1." for "sunrise-sunset,(; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
+"Time range does not continue as expected for mode === 2." for "sunrise-sunset,(; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 sunrise-sunset,( <--- (Missing variable time (e.g. sunrise) after: "(")
+
+An error occurred during evaluation of the value "Mo-Fr 10:00-20:00; PH off". Please submit a pull request: https://github.com/ypid/opening_hours.js. There are no holidays (PH) defined for country none.
+"PH with non-existing address." for "Mo-Fr 10:00-20:00; PH off": [1m[32mPASSED[39m[22m
+An error occurred during evaluation of the value "Mo-Fr 10:00-20:00; PH off". Please submit a pull request: https://github.com/ypid/opening_hours.js. There are no holidays (PH) defined for country none.
+
+An error occurred during evaluation of the value "Mo-Fr 10:00-20:00; SH off". Please submit a pull request: https://github.com/ypid/opening_hours.js. There are no holidays (SH) defined for country none.
+"SH with non-existing address." for "Mo-Fr 10:00-20:00; SH off": [1m[32mPASSED[39m[22m
+An error occurred during evaluation of the value "Mo-Fr 10:00-20:00; SH off". Please submit a pull request: https://github.com/ypid/opening_hours.js. There are no holidays (SH) defined for country none.
 
 "Trying to trigger "Missing minutes in time range after" for mode === 0." for "Mon-Sun 14-": [1m[32mPASSED[39m[22m
 Mon-Sun 14- <--- (Missing time separator in time range after: "number")
@@ -2248,11 +2272,14 @@ Su 7:30,10 <--- (Missing time separator in time range after: "number")
 "Trying to trigger "Missing time separator in time range after" for mode === 2." for "Su 7:30,10i00,22:00": [1m[32mPASSED[39m[22m
 Su 7:30,10i <--- (Missing time separator in time range after: "number")
 
-"Wrong constructor call should throw an error: nominatiomJSON: string" for "1": [1m[32mPASSED[39m[22m
+"Wrong constructor call should throw an error: nominatimJSON: string" for "1": [1m[32mPASSED[39m[22m
 The value (first parameter) is not a string.
 
-"Wrong constructor call should throw an error: nominatiomJSON: string" for "Mo-Fr 08:00-16:00": [1m[32mPASSED[39m[22m
-The nominatiomJSON parameter is of unknown type. Given string, expected object.
+"Wrong constructor call should throw an error: nominatimJSON: string" for "Mo-Fr 08:00-16:00": [1m[32mPASSED[39m[22m
+The nominatim_object parameter is of unknown type. Given string, expected object.
+
+"Wrong constructor call should throw an error: "string"" for "Mo-Fr 12:00-18:00; We off; Sa,PH 12:00-17:00; Th[3],Th[-1] off": [1m[32mPASSED[39m[22m
+The optional_conf_parm parameter is of unknown type. Given string
 
 "Wrong constructor call should throw an error: warnings_severity: [ 4 ]" for "Mo-Fr 12:00-18:00; We off; Sa,PH 12:00-17:00; Th[3],Th[-1] off": [1m[32mPASSED[39m[22m
 The optional_conf_parm["warnings_severity"] parameter is of unknown type. Given object, expected number.
@@ -2299,7 +2326,25 @@ The optional_conf_parm["tag_key"] is missing, required by optional_conf_parm["ma
 "Compare result from getMatchingRule()" for "Fr 08:00-12:00 || Fr 12:00-16:00 open "Notfallsprechstunde"": [1m[32mPASSED[39m[22m
 "Compare result from getMatchingRule()" for "Fr 08:00-12:00, Fr 12:00-16:00 open "Notfallsprechstunde"": [1m[32mPASSED[39m[22m
 "Compare result from getMatchingRule()" for "Fr 08:00-12:00 || Fr 12:00-16:00 open "Notfallsprechstunde"": [1m[32mPASSED[39m[22m
-855/866 tests passed.
+"Compare prettifyValue" for "Mo": [1m[32mPASSED[39m[22m
+"Compare prettifyValue" for "Mon": [1m[32mPASSED[39m[22m
+"Compare prettifyValue" for "Montag": [1m[32mPASSED[39m[22m
+"Test isEqualTo function: Full range" for "open": [1m[32mPASSED[39m[22m
+"Test isEqualTo function: Full range" for "24/7": [1m[32mPASSED[39m[22m
+"Test isEqualTo function: Full range" for "2000-2100": [1m[32mPASSED[39m[22m
+"Test isEqualTo function: Full range" for "Mo-Su": [1m[32mPASSED[39m[22m
+"Test isEqualTo function: Full range" for "02:00-26:00": [1m[32mPASSED[39m[22m
+"Test isEqualTo function: Full range" for "02:00-02:00": [1m[32mPASSED[39m[22m
+"Test isEqualTo function" for "Mo 10:00-20:00; We-Fr 10:00-20:00": [1m[32mPASSED[39m[22m
+"Test isEqualTo function" for "We-Fr 10:00-20:00; Mo 10:00-20:00": [1m[32mPASSED[39m[22m
+"Test isEqualTo function" for "closed; Mo 10:00-20:00; We-Fr 10:00-20:00": [1m[32mPASSED[39m[22m
+"Test isEqualTo function" for "open; closed; Mo 10:00-20:00; We-Fr 10:00-20:00": [1m[32mPASSED[39m[22m
+"Test isEqualTo function" for "Jan 1: open; closed; Mo 10:00-20:00; We-Fr 10:00-20:00": [1m[32mPASSED[39m[22m
+"Test isEqualTo function" for "Mo": [1m[32mPASSED[39m[22m
+"Test isEqualTo function" for "Mo 10:00-20:00; We-Fr 10:00-20:01": [1m[32mPASSED[39m[22m
+"Test isEqualTo function" for "Mo 10:00-20:00; We-Fr 10:00-19:59": [1m[32mPASSED[39m[22m
+"Test isEqualTo function" for "closed; Sa unknown "comment"": [1m[32mPASSED[39m[22m
+881/892 tests passed.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

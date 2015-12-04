@@ -8,8 +8,10 @@ VERBOSE ?= 1
 OH_RELATED_TAGS ?= related_tags.txt
 STATS_FOR_BOUNDARIES ?= stats_for_boundaries.txt
 
-API_URL_TAGINFO  ?= http://taginfo.openstreetmap.org/api
+API_URL_TAGINFO  ?= https://taginfo.openstreetmap.org/api
 API_URL_OVERPASS ?= http://overpass-api.de/api
+# GnuTLS: A TLS warning alert has been received.
+# GnuTLS: received alert [112]: The server name sent was not recognized
 
 TMP_QUERY ?= ./tmp_query.op
 OVERPASS_QUERY_KEY_FILTER_CMD ?= cat
@@ -37,6 +39,8 @@ HOURS_INCREMENT ?= 1
 
 WGET_OPTIONS ?= --no-verbose
 MAKE_OPTIONS ?= --no-print-directory
+
+CHECK_LANG ?= 'en'
 ## }}}
 
 .PHONY: default
@@ -44,60 +48,86 @@ default: list
 
 ## help {{{
 .PHONY: list
-# http://stackoverflow.com/a/26339924/2239985
+# https://stackoverflow.com/a/26339924/2239985
 list:
 	@echo "This Makefile has the following targets:"
 	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$' | sed 's/^/    /'
 ## }}}
 
 .PHONY: dependencies-get
-dependencies-get:
+dependencies-get: package.json
+	git submodule update --init --recursive
 	npm install
+	bower install
+
+.PHONY: dependencies-updateable
+dependencies-updateable: package.json
+	ncu --upgradeAll --packageFile "$<"
+
+.PHONY: dependencies-user-wide-get
+dependencies-user-wide-get:
+	npm install --global doctoc npm-check-updates
 
 .PHONY: build
 build: opening_hours.min.js
 
 .PHONY: check
-check: check-diff-all check-package.json
+check: check-diff check-package.json
+
+.PHONY: check-full
+check-full: check-diff-all check-package.json
 
 .PHONY: benchmark
 benchmark: benchmark-opening_hours.min.js
 
 README.html: README.md
 
+taginfo.json: gen_taginfo_json.js related_tags.txt taginfo_template.json
+	$< --key-file related_tags.txt --template-file taginfo_template.json > "$@"
+
+.PHONY: doctoc
+doctoc:
+	doctoc README.md --title '**Table of Contents**'
+
 .PHONY: release
-release: check source-code-qa
+## First source file is referenced!
+release: package.json doctoc check-diff-uglifyjs-log check qa-source-code qa-https-everywhere
 	git status
 	read continue
-	editor package.json
+	editor "$<"
+	jq --raw-output '.version' $<
+	read continue
 	$(MAKE) $(MAKE_OPTIONS) check-package.json
-	git commit --all --message="Released version `json -f package.json version`."
-	git tag --sign --local-user=C505B5C93B0DB3D338A1B6005FE92C12EE88E1F0 "v`json -f package.json version`"
+	git commit --all --message="Released version $(shell jq --raw-output '.version' '$<')."
+	git tag --sign --local-user C505B5C93B0DB3D338A1B6005FE92C12EE88E1F0 "v$(jq --raw-output '.version' $<)"
 	git push --follow-tags
 	npm publish
-	$(MAKE) $(MAKE_OPTIONS) publish-website-on-all-servers
+	# $(MAKE) $(MAKE_OPTIONS) publish-website-on-all-servers
 
 .PHONY: clean
 clean: osm-tag-data-rm
-	rm --force *.min.js
+	rm --force *+deps.js *.min.js
 	rm --force README.html
 	rm --force taginfo_sources.json
 
 .PHONY: osm-tag-data-rm
 osm-tag-data-rm: osm-tag-data-taginfo-rm osm-tag-data-overpass-rm
 
+## Build files which are needed to host the evaluation tool on a webserver.
+.PHONY: ready-for-hosting
+ready-for-hosting: dependencies-get opening_hours+deps.min.js
+
 ## Publish {{{
 
-.PHONY: publish-website-on-all-servers
-publish-website-on-all-servers: publish-website-on-ypid.de publish-website-on-openingh.openstreetmap.de
+## Using Ansible with the https://github.com/ypid/ansible-synchronize role to update mirros.
+## This improves the update process significantly.
 
-.PHONY: publish-website-on-openingh.openstreetmap.de
-publish-website-on-openingh.openstreetmap.de:
-	ssh gauss.osm.de './update'
+# .PHONY: publish-website-on-all-servers
+# publish-website-on-all-servers: publish-website-on-ypid.de publish-website-on-openingh.openstreetmap.de
 
-.PHONY: publish-website-on-ypid.de
-publish-website-on-ypid.de:
-	ssh osm@ypid.de './update'
+# .PHONY: publish-website-on-openingh.openstreetmap.de
+# publish-website-on-openingh.openstreetmap.de:
+#     ssh gauss.osm.de './update'
 
 ## }}}
 
@@ -108,13 +138,20 @@ run-regex_search: export.$(SEARCH).json interactive_testing.js regex_search.py
 
 .PHONY: run-interactive_testing
 run-interactive_testing: interactive_testing.js
-	$(NODE) "$<"
+	$(NODE) "$<" --locale $(CHECK_LANG)
 ## }}}
 
 ## Source code QA {{{
-.PHONY: source-code-qa
-source-code-qa:
+.PHONY: qa-source-code qa-https-everywhere
+qa-source-code:
 	git ls-files | egrep '\.js$$' | xargs sed -i 's/\([^=!]\)==\([^=]\)/\1===\2/g;s/\([^=!]\)!=\([^=]\)/\1!==\2/g;'
+
+qa-https-everywhere:
+	git ls-files -z | xargs -0 sed -i 's#https://wiki.openstreetmap.org#https://wiki.openstreetmap.org#g;s#https://open.mapquestapi.com#https://open.mapquestapi.com#g;s#https://nominatim.openstreetmap.org#https://nominatim.openstreetmap.org#g;s#https://taginfo.openstreetmap.org#https://taginfo.openstreetmap.org#g;s#https://stackoverflow.com#https://stackoverflow.com#g;s#https://www.gnu.org/#https://www.gnu.org/#g;s#https://overpass-turbo.eu/#https://overpass-turbo.eu/#g;s#https://www.openstreetmap.org/#https://www.openstreetmap.org/#g;s#https://openstreetmap.org#https://openstreetmap.org#g;'
+	# git ls-files -z | xargs -0 sed -i 's#http://overpass-api.de/#https://overpass-api.de/#g;'
+	git ls-files -z | xargs -0 sed -i 's#http://\(\w\+\).wikipedia.org#https://\1.wikipedia.org#g;'
+	test -f index.html && git checkout index.html
+	# ack 'http://'
 ## }}}
 
 ## software testing {{{
@@ -122,11 +159,26 @@ source-code-qa:
 .PHONY: check-all
 check-all: check-package.json check-test check-diff-all osm-tag-data-update-check
 
+.PHONY: check-fast
+check-fast: check-diff-en-opening_hours.js
+
 .PHONY: check-diff-all
 check-diff-all: check-diff check-diff-opening_hours.min.js
 
 .PHONY: check-diff
-check-diff: check-diff-opening_hours.js
+check-diff: check-diff-all-opening_hours.js
+
+
+.PHONY: check-diff-uglifyjs-log
+check-diff-uglifyjs-log: uglifyjs.log
+	git --no-pager diff -- "$<"
+	git diff --quiet --exit-code HEAD -- "$<" || read fnord; \
+	if [ "$$fnord" == "b" ]; then \
+		exit 1; \
+	fi
+
+.PHONY: check-test
+check-test: check-opening_hours.js
 
 .PHONY: check-test
 check-test: check-opening_hours.js
@@ -139,17 +191,30 @@ check-opening_hours.min.js:
 check-%.js: %.js test.js
 	-$(NODE) test.js "./$<"
 
-check-diff-opening_hours.js:
-check-diff-opening_hours.min.js:
+check-diff-all-opening_hours.js:
+check-diff-all-opening_hours.min.js:
+
+check-diff-all-%.js: %.js test.js
+	@for lang in en de; do \
+		$(MAKE) $(MAKE_OPTIONS) CHECK_LANG=$$lang check-diff-opening_hours.js; \
+	done
 
 .SILENT: check-diff-opening_hours.js check-diff-opening_hours.min.js
+check-diff-en-opening_hours.js: check-diff-opening_hours.js
+check-diff-de-opening_hours.js:
+	$(MAKE) $(MAKE_OPTIONS) CHECK_LANG=de check-diff-opening_hours.js
+
 check-diff-%.js: %.js test.js
-	git checkout HEAD -- test.log
-	# git checkout master -- test.log
-	# git checkout 9f323b9d06720b6efffc7420023e746ff8f1b309 -- test.log
-	$(NODE) test.js 1> test.log 2>&1 || echo "Test results for $< are exactly the same as on developemt system. So far, so good ;)"
-	# git --no-pager diff --color-words test.log
-	git --no-pager diff test.log
+	$(NODE) test.js --library-file "$<" --locale $(CHECK_LANG) 1> test.$(CHECK_LANG).log 2>&1; \
+	git diff --quiet --exit-code HEAD -- test.$(CHECK_LANG).log; \
+	if [ "$$?" == "0" ]; then \
+		echo "Test results for $< ($(CHECK_LANG)) are exactly the same as on developemt system. So far, so good ;)"; \
+	else \
+		echo "Test results for $< ($(CHECK_LANG)) produced a different output then the output of the current HEAD. Checkout the following diff."; \
+	fi
+	git --no-pager diff -- test.$(CHECK_LANG).log
+	## This would allow no diff at all which means no changes to the test framework …
+	# git --no-pager diff --exit-code -- test.$(CHECK_LANG).log
 
 .PHONY: osm-tag-data-taginfo-check
 osm-tag-data-taginfo-check: real_test.js opening_hours.js osm-tag-data-get-taginfo
@@ -197,6 +262,7 @@ osm-tag-data-get-taginfo: $(OH_RELATED_TAGS)
 
 # Testing:
 export.happy_hours.json:
+export.opening_hours.json:
 export.lit.json:
 
 export.%.json:
@@ -205,8 +271,8 @@ export.%.json:
 
 ## OSM data from the overpass API {{{
 # Before running large imports check the load of the overpass API:
-# * http://overpass-api.de/munin/localdomain/localhost.localdomain/load.html
-# * http://overpass-api.de/munin/localdomain/localhost.localdomain/osm_db_request_count.html
+# * https://overpass-api.de/munin/localdomain/localhost.localdomain/load.html
+# * https://overpass-api.de/munin/localdomain/localhost.localdomain/osm_db_request_count.html
 
 ## The value separator is ♡ because it is not expected that this appears anywhere else in the tags and it works with GNU make.
 ## Unfortunately, it does not work with cut, but that problem can be solved.
@@ -412,10 +478,22 @@ osm-tag-data-gen-stats-sort:
 	done
 ## }}}
 
+opening_hours+deps.js:
+
+%+deps.js: %.js
+	./node_modules/.bin/browserify --require moment --require i18next-client --require "./$<:opening_hours" --outfile "$@"
+
+uglifyjs.log: opening_hours.js
+	uglifyjs "$<" --lint 1>/dev/zero 2>uglifyjs.log
+
 opening_hours.min.js:
 
+opening_hours+deps.min.js: opening_hours+deps.js
+	@true I don’t really care for warnings in dependencies of opening_hours.js.
+	uglifyjs "$<" --output "$@" --comments '/github.com/' --lint 2> >(grep --invert-match '^WARN: ')
+
 %.min.js: %.js
-	uglifyjs "$<" --output "$@" --comments '/ypid\/opening_hours\.js/' --lint
+	uglifyjs "$<" --output "$@" --comments '/github.com/' --lint
 
 README.html:
 
