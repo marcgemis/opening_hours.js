@@ -32,6 +32,44 @@
                 "Allerheiligen - Toussaint"                                : [ 11, 1 ],
                 "Wapenstilstand - Armistice"                               : [ 11, 11 ],
                 "Kerstmis - Noël"                                          : [ 12, 25 ]
+            },
+            'Vlaanderen': { // does only apply in Vlaanderen
+                'SH': [ 
+                    {
+                        name: 'Krokusvakantie',
+                        2016: [  2,  8, /* to */  2,  14 ],
+                        2017: [  2, 27, /* to */  5,   3 ],
+                        2018: [  2, 12, /* to */  2,  18 ],
+                    },
+                    {
+                        name: 'Paasvakantie',
+                        2016: [  3, 28, /* to */  4,  10 ],
+                        2017: [  4,  3, /* to */  4,  17 ],
+                        2018: [  4,  2, /* to */  4,  15 ],
+                    },
+                    {
+                        name: 'Hemelvaart',
+                        2016: [  5,  5, /* to */  5,   6 ],
+                        2017: [  5, 25, /* to */  5,  26 ],
+                        2018: [  5, 10, /* to */  5,  11 ],
+                    },
+                    {
+                        name: 'Zomervakantie',
+                        2016: [  7,  1, /* to */  8,  31 ],
+                        2017: [  7,  1, /* to */  8,  31 ],
+                        2018: [  7,  1, /* to */  8,  31 ],
+                    },
+                    {
+                        name: 'Herfstvakantie',
+                        2016: [ 10, 31, /* to */ 11,   6 ],
+                        2017: [ 10, 30, /* to */ 11,   5 ],
+                    },
+                    {
+                        name: 'Kerstvakantie',
+                        2016: [ 12, 26, /* to */  1,   8 ],
+                        2017: [ 12, 25, /* to */  1,   7 ],
+                    },
+                ]
             }
         }, // }}}
         'fr': { // {{{
